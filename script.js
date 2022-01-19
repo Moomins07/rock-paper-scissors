@@ -1,9 +1,14 @@
 
-let scoreBoard =  (0)+1
-let computerScore =  (0)+1
+let userScore =  0
+let computerScore =  0
 
+function userWin() {
+    userScore++
+}
 
-
+function userLose() {
+    computerScore++
+}
 
 function computerPlay() {
     const choices = ['r', 'p', 's']
@@ -13,26 +18,19 @@ function computerPlay() {
 
 
 function win() {
-console.log ("You win!")
-console.log (`Your score: ${scoreBoard++}`)
+    userWin()
+    console.log (`You win!\nYour score: ${userScore}\nComputer score: ${computerScore}`)
 
-if (scoreBoard > computerScore) {
-    console.log ("Gameover! You beat the PC!")
-}
 }
 
 function lose() {
-console.log ("You lose!")
-console.log (`Pc score: ${computerScore++}`)
-
-if (computerScore > scoreBoard) {
-    console.log ("Gameover! You lost to the PC!")
-}
+    userLose()
+    console.log (`You lose!\nYour score: ${userScore}\nComputer score: ${computerScore}`)
 
 }
 
 function tie() {
-console.log ("Tie!")
+console.log (`Tie!\nYour score: ${userScore}\nComputer score: ${computerScore}`)
 }
 
 function playRound() {
@@ -41,17 +39,17 @@ function playRound() {
     switch (userPrompt + computerChoice) {
     case "rocks":
     case "paperr":
-    case "stonep":
+    case "scissorsp":
         win();
         break; 
-    case "stoner":
+    case "scissorsr":
     case "rockp":
     case "papers":
         lose();
         break;
     case "rockr":
     case "paperp":
-    case "stones":
+    case "scissorss":
         tie();
         break;
     default: return ("I don't know that!");
@@ -65,5 +63,14 @@ function game() {
     playRound()
     playRound()
     playRound()
+
+    if (userScore > computerScore)
+    return("You beat the computer!")
+
+    else if (userScore === computerScore)
+    return("You tied with the computer!")
+
+    else if (userScore < computerScore)
+    return("You lost to the computer!")
 }
 
